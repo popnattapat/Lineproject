@@ -1,0 +1,25 @@
+{
+  "name": "pop-project",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@eloqjs/nuxt-collection": "^1.0.0-alpha.1",
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/proxy": "^2.1.0",
+    "collect.js": "^4.29.0",
+    "core-js": "^3.15.1",
+    "nuxt": "^2.15.7"
+  },
+  "devDependencies": {
+    "@nuxt/image": "^0.6.0",
+    "@nuxtjs/moment": "^1.6.1",
+    "sass": "^1.42.1",
+    "sass-loader": "^10.2.0"
+  }
+}

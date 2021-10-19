@@ -1,0 +1,178 @@
+/* --------------------------------
+
+Nucleo Web Font
+Generated using nucleoapp.com
+
+-------------------------------- */
+$icon-font-path: "../fonts" !default;
+
+@font-face {
+  font-family: 'Nucleo';
+  src: url('#{$icon-font-path}/Nucleo.eot');
+  src: url('#{$icon-font-path}/Nucleo.eot') format('embedded-opentype'),
+    url('#{$icon-font-path}/Nucleo.woff2') format('woff2'),
+    url('#{$icon-font-path}/Nucleo.woff') format('woff'),
+    url('#{$icon-font-path}/Nucleo.ttf') format('truetype'),
+    url('#{$icon-font-path}/Nucleo.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*------------------------
+	base class definition
+-------------------------*/
+
+.icon {
+  display: inline-block;
+  font: normal normal normal 1em/1 'Nucleo';
+  color: inherit;
+  flex-shrink: 0;
+  speak: none;
+  text-transform: none;
+  /* Better Font Rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*------------------------
+  change icon size
+-------------------------*/
+
+/* relative units */
+.icon-sm {
+  font-size: 0.8em;
+}
+.icon-lg {
+  font-size: 1.2em;
+}
+/* absolute units */
+.icon-16 {
+  font-size: 16px;
+}
+.icon-32 {
+  font-size: 32px;
+}
+
+/*------------------------
+  spinning icons
+-------------------------*/
+
+.icon-is-spinning {
+  animation: icon-spin 1s infinite linear;
+}
+
+@keyframes icon-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*------------------------
+  rotated/flipped icons
+-------------------------*/
+
+.icon-rotate-90  {
+	transform: rotate(90deg);
+}
+
+.icon-rotate-180 {
+	transform: rotate(180deg);
+}
+
+.icon-rotate-270 {
+	transform: rotate(270deg);
+}
+
+.icon-flip-y {
+	transform: scaleY(-1);
+}
+.icon-flip-x {
+	transform: scaleX(-1);
+}
+
+/*------------------------
+	icons
+-------------------------*/
+@function unicode($str) {
+  @return unquote("\"\\#{$str}\"");
+}
+
+$icon-f-comment: unicode(ea03);
+$icon-contacts-2: unicode(ea04);
+$icon-antenna: unicode(ea05);
+$icon-gear: unicode(ea06);
+$icon-e-add: unicode(ea07);
+$icon-drill: unicode(ea08);
+$icon-volume-2: unicode(ea09);
+$icon-volume-off: unicode(ea0a);
+$icon-b-comment: unicode(ea0b);
+$icon-s-check: unicode(ea0c);
+$icon-zoom: unicode(ea0d);
+$icon-c-warning: unicode(ea1b);
+$icon-comment: unicode(ea1c);
+$icon-keyboard_arrow_up: unicode(ea2c);
+$icon-keyboard_arrow_down: unicode(ea2d);
+
+.icon-f-comment::before {
+  content: $icon-f-comment;
+}
+
+.icon-contacts-2::before {
+  content: $icon-contacts-2;
+}
+
+.icon-antenna::before {
+  content: $icon-antenna;
+}
+
+.icon-gear::before {
+  content: $icon-gear;
+}
+
+.icon-e-add::before {
+  content: $icon-e-add;
+}
+
+.icon-drill::before {
+  content: $icon-drill;
+}
+
+.icon-volume-2::before {
+  content: $icon-volume-2;
+}
+
+.icon-volume-off::before {
+  content: $icon-volume-off;
+}
+
+.icon-b-comment::before {
+  content: $icon-b-comment;
+}
+
+.icon-s-check::before {
+  content: $icon-s-check;
+}
+
+.icon-zoom::before {
+  content: $icon-zoom;
+}
+
+.icon-c-warning::before {
+  content: $icon-c-warning;
+}
+
+.icon-comment::before {
+  content: $icon-comment;
+}
+
+.icon-keyboard_arrow_up::before {
+  content: $icon-keyboard_arrow_up;
+}
+
+.icon-keyboard_arrow_down::before {
+  content: $icon-keyboard_arrow_down;
+}
+
