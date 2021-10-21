@@ -1,24 +1,27 @@
 export const state = () => ({
-  chat_data: [],
   active_room: {},
-  chat_contact: [],
-  chat_lists: [],
-  chat_messages: null,
-  chat_loading: false,
   call_data: [],
+  chat_contact: [],
+  chat_data: [],
+  chat_lists: [],
+  chat_loading: false,
+  chat_messages: null,
   is_pending: false,
   pending: {},
+  search_list: [],
+  list_filtered: [],
 })
 
 export const actions = {
   async fetchChatList({commit}) {
     let response = await this.$axios.$get('/api/line_message/crud/chatList', {
       params: {
-        limit: 50,
+        limit: 1000,
       }
     })
 
     commit('setChatList', response.data)
+    commit('setFilteredList', response.data)
   },
   async fetchChatMessage({commit}, payload) {
     commit('setActiveRoom', payload)
@@ -53,7 +56,8 @@ export const mutations = {
     let collection = this.$collect(lists);
 
     state.chat_lists = collection.mapWithKeys(
-      element => [element.lineId, element]);
+      element => [element.lineId, element]).toArray();
+
   },
   setChatMessage(state, messages) {
     state.chat_messages = messages;
@@ -76,7 +80,12 @@ export const mutations = {
   setPending(state, payload) {
     state.is_pending = true;
     state.pending = payload;
-  }
+  },
+
+  setFilteredList(state, list) {
+    state.list_filtered = list;
+  },
+
 }
 //
 // export const active = {searchInput = document.getElementsByName('searchList')

@@ -12,7 +12,7 @@
 <!--</style>-->
 <template>
   <div>
-  <button class="ui button toggle" @click="toggle">OFF</button>
+    <ChatTest/>
   </div>
 </template>
 

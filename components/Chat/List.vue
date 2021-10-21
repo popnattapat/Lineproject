@@ -1,6 +1,6 @@
 <template>
   <div class="chatlist" style="overflow-y: scroll;" id="list">
-    <div v-for="(chat, index) in $store.state.chats.chat_lists" :key="index"
+    <div v-for="(chat, index) in $store.state.chats.list_filtered" :key="index"
          @click="$store.dispatch('chats/fetchChatMessage', {'lineId': chat.lineId, 'type':chat.type, 'avatar': chat.avatar,'displayName': chat.displayName})">
       <div class="chatbox" :class="{'is-active': $store.state.chats.active_room.displayName === chat.displayName}" id="">
         <div class="chatbox2-image"><img :src="chat.avatar" alt="" class="avatar"></div>
@@ -29,7 +29,6 @@ export default {
   methods: {},
   created() {
     this.$store.dispatch('chats/fetchChatList');
-    // this.$store.dispatch('chats/searchList')
   },
   function: {},
 }

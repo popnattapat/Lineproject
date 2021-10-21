@@ -19,16 +19,16 @@
     </div>
     <div style="display:flex">
       <div>
-        <div @click="changeList('user')" class="linkbtn" :class="{'is-active': currentList === 'user' }" style="margin-left:0;">Users</div>
+        <div @click="changeOrder('user')" class="linkbtn" :class="{'is-active': currentList === 'user' }" style="margin-left:0;">Users</div>
       </div>
       <div>
-        <div @click="changeList('group')" class="linkbtn" :class="{'is-active': currentList === 'group' }">Groups</div>
+        <div @click="changeOrder('group')" class="linkbtn" :class="{'is-active': currentList === 'group' }">Groups</div>
       </div>
       <div style="flex:1">
       </div>
 
       <div style="display: flex; flex-direction: row-reverse">
-        <div class="clear"> Clear</div>
+        <div class="clear" @click="search = ''"> Clear</div>
         <input id=searchbar type="search" placeholder="Search ..." v-model="search">
       </div>
     </div>
@@ -45,7 +45,7 @@ export default {
     }
   },
   methods: {
-    changeList(type) {
+    changeOrder(type) {
       this.$store.commit('contacts/changeActiveList', type);
       this.currentList = type;
     },
@@ -123,6 +123,7 @@ export default {
 }
 
 .clear {
+  cursor: pointer;
   box-sizing: border-box;
   width: 60px;
   height: 36px;

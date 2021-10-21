@@ -1,7 +1,7 @@
 export const state = () => ({
+  active_list: 'user',
   contact_lists: {},
   contact_lists_filtered: {},
-  active_list: 'user',
   loading: false,
 })
 

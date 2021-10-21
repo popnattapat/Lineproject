@@ -23,7 +23,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~plugins/data-filter.js'
+    '~plugins/data-filter.js',
+    '~plugins/collection.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -41,7 +42,7 @@ export default {
   modules: [
     '@nuxt/image',
     '@nuxtjs/axios',
-    '@eloqjs/nuxt-collection',
+    // '@eloqjs/nuxt-collection',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

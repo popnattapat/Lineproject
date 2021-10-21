@@ -118,7 +118,7 @@ export default {
   height: 47px;
   padding: 12px;
   background-color: #edeff0;
-  border-width: 1px 0 0 0;
+  border-width: 1px 0 1px 0;
   border-style: solid;
   border-color: rgb(222, 226, 230);
   font-size: 16px;
@@ -129,7 +129,7 @@ export default {
   height: 61px;
   padding: 12px;
   color: #666F86;
-  border-width: 1px 0 0 0;
+  border-width: 0 0 1px 0;
   border-style: solid;
   border-color: rgb(222, 226, 230)
 }

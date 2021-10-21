@@ -1,7 +1,7 @@
 <template>
   <div class="searcharea">
     <div style="display:flex">
-      <div class="drawer-toggle">
+      <div class="drawer-toggle" role="button" @click="$emit('toggle')">
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
@@ -12,7 +12,7 @@
       <div class="spacer"></div>
       <div>
         <div>
-          <input id=searchbar type="search" style="width:150px" placeholder="Search ...">
+          <input id=searchbar type="search" style="width:150px" placeholder="Search ..." v-model="search">
         </div>
       </div>
     </div>
@@ -21,17 +21,31 @@
 
 <script>
 
-// export default {
-//   props: {
-//     show: {
-//       type: Boolean,
-//       default: false
-//     }
-//   }
-// };
-
+export default {
+  data() {
+    return {
+      search: ''
+    }
+  },
+  // computed: {
+  //   filteredList() {
+  //     return this.postList.filter(post => {
+  //       return post.title.toLowerCase().includes(this.search.toLowerCase())
+  //     })
+  //   }
+  // }
+  watch: {
+    search(value) {
+      this.$store.commit('chats/setFilteredList', this.$store.state.chats.chat_lists.filter(chat => {
+        return chat.displayName.toLowerCase().includes(value.toLowerCase())
+      }));
+    },
+  },
+}
 </script>
-
+<!--this.$store.commit('chats/setFilteredList', this.$store.state.chats.chat_lists[this.$store.state.chats.search_list].filter(chat => {-->
+<!--return chat(this.$store.state.chats.search_list).toLowerCase().includes(value.toLowerCase())-->
+<!--}));-->
 
 <style lang="scss">
 .searcharea {
