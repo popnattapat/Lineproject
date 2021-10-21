@@ -19,10 +19,10 @@
     </div>
     <div style="display:flex">
       <div>
-        <div @click="changeOrder('user')" class="linkbtn" :class="{'is-active': currentList === 'user' }" style="margin-left:0;">Users</div>
+        <div @click="changeAccountType('user')" class="linkbtn" :class="{'is-active': currentList === 'user' }" style="margin-left:0;">Users</div>
       </div>
       <div>
-        <div @click="changeOrder('group')" class="linkbtn" :class="{'is-active': currentList === 'group' }">Groups</div>
+        <div @click="changeAccountType('group')" class="linkbtn" :class="{'is-active': currentList === 'group' }">Groups</div>
       </div>
       <div style="flex:1">
       </div>
@@ -45,7 +45,7 @@ export default {
     }
   },
   methods: {
-    changeOrder(type) {
+    changeAccountType(type) {
       this.$store.commit('contacts/changeActiveList', type);
       this.currentList = type;
     },

@@ -66,10 +66,6 @@ export default {
   background-color: rgb(248, 249, 250);
 }
 
-.chatbox:active {
-  background-color: #edeff0;
-}
-
 .chatbox2-image {
   width: 130px;
   height: 63px;

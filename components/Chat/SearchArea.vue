@@ -1,10 +1,9 @@
 <template>
   <div class="searcharea">
     <div style="display:flex">
-      <div class="drawer-toggle" role="button" @click="$emit('toggle')">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
+      <div>
+        <TypeCallThreeBar @sidenavToggle="displaySidenav = !displaySidenav"/>
+        <TypeDropdown :show="displaySidenav" @close="displaySidenav = false"/>
       </div>
       <div style="text-align: left; margin: 10px 0px 10px 0; cursor: pointer; color:#353A40 ">
         All
@@ -21,22 +20,30 @@
 
 <script>
 
+import TypeThreeBar from "./TypeThreeBar";
+import TypeCallThreeBar from "./TypeCallThreeBar";
+import TypeDropdown from "./TypeDropdown";
+
 export default {
+  components: {TypeDropdown, TypeCallThreeBar, TypeThreeBar},
   data() {
     return {
-      search: ''
+      displaySidenav: false
     }
   },
-  // computed: {
-  //   filteredList() {
-  //     return this.postList.filter(post => {
-  //       return post.title.toLowerCase().includes(this.search.toLowerCase())
-  //     })
-  //   }
-  // }
+  computed: {
+    search: {
+      get: function () {
+        return this.$store.state.chats.search;
+      },
+      set: function (value) {
+        this.$store.commit('chats/setSearch', value);
+      },
+    }
+  },
   watch: {
     search(value) {
-      this.$store.commit('chats/setFilteredList', this.$store.state.chats.chat_lists.filter(chat => {
+      this.$store.commit('chats/setFilteredList', this.$store.state.chats.current_chat_lists.filter(chat => {
         return chat.displayName.toLowerCase().includes(value.toLowerCase())
       }));
     },
@@ -47,7 +54,7 @@ export default {
 <!--return chat(this.$store.state.chats.search_list).toLowerCase().includes(value.toLowerCase())-->
 <!--}));-->
 
-<style lang="scss">
+<style lang="scss" scoped>
 .searcharea {
   display: block;
   box-sizing: border-box;
@@ -102,10 +109,9 @@ export default {
   padding: 10px 10px 10px 5px;
 }
 
-.spacer{
-  flex:1;
+.spacer {
+  flex: 1;
 }
-
 
 
 </style>

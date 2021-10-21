@@ -4,12 +4,15 @@ export const state = () => ({
   chat_contact: [],
   chat_data: [],
   chat_lists: [],
+  current_chat_lists: [],
   chat_loading: false,
   chat_messages: null,
   is_pending: false,
   pending: {},
   search_list: [],
   list_filtered: [],
+  search: '',
+
 })
 
 export const actions = {
@@ -21,6 +24,7 @@ export const actions = {
     })
 
     commit('setChatList', response.data)
+    commit('setCurrentList', response.data)
     commit('setFilteredList', response.data)
   },
   async fetchChatMessage({commit}, payload) {
@@ -84,7 +88,29 @@ export const mutations = {
 
   setFilteredList(state, list) {
     state.list_filtered = list;
+
   },
+  setCurrentList(state, list) {
+    state.current_chat_lists = list;
+    this.commit('chats/setFilteredList', list);
+
+  },
+  changeMessageType(state, type) {
+    // this.commit('chats/setSearch', '');
+    if (type === 'all') {
+      this.commit('chats/setCurrentList', state.chat_lists);
+    } else {
+      this.commit('chats/setCurrentList', state.chat_lists.filter(chat => {
+        return chat.type.toLowerCase().includes(type)
+      }));
+    }
+    this.commit('chats/setFilteredList', state.current_chat_lists.filter(chat => {
+      return chat.displayName.toLowerCase().includes(state.search.toLowerCase())
+    }));
+  },
+  setSearch(state,value){
+    state.search = value;
+  }
 
 }
 //

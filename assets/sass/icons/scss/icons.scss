@@ -115,6 +115,8 @@ $icon-c-warning: unicode(ea1b);
 $icon-comment: unicode(ea1c);
 $icon-keyboard_arrow_up: unicode(ea2c);
 $icon-keyboard_arrow_down: unicode(ea2d);
+$icon-multiple-19: unicode(ea31);
+$icon-user: unicode(ea34);
 
 .icon-f-comment::before {
   content: $icon-f-comment;
@@ -174,5 +176,13 @@ $icon-keyboard_arrow_down: unicode(ea2d);
 
 .icon-keyboard_arrow_down::before {
   content: $icon-keyboard_arrow_down;
+}
+
+.icon-multiple-19::before {
+  content: $icon-multiple-19;
+}
+
+.icon-user::before {
+  content: $icon-user;
 }
 

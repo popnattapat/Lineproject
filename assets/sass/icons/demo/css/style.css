@@ -239,3 +239,11 @@ icons
   content: "\ea2d";
 }
 
+.icon-multiple-19::before {
+  content: "\ea31";
+}
+
+.icon-user::before {
+  content: "\ea34";
+}
+

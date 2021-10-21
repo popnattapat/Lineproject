@@ -1,13 +1,15 @@
 <template>
-  <div class="drawer-toggle" role="button" @click="$emit('toggle')">
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
+  <div>
+    <TypeThreeBar @toggle="$emit('sidenavToggle')"/>
   </div>
 </template>
 
 <script>
+import TypeThreeBar from "./TypeThreeBar";
 
+export default {
+  components: {TypeThreeBar},
+}
 </script>
 
 <style scoped>
@@ -16,7 +18,6 @@
   height: 2px;
   background-color: rgb(121, 117, 117);
   padding: 0;
-  margin-top: 3px
 }
 
 .drawer-toggle {
