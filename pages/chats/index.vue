@@ -7,7 +7,7 @@
 
     <div style="width: 100%;">
       <ChatDisplay v-if="($store.state.chats.chat_messages)"/>
-      <ChatEmpty2 v-if="$store.state.chats.chat_loading"/>
+      <ChatEmptyLoading v-if="$store.state.chats.chat_loading"/>
       <ChatEmpty v-else />
     </div>
   </div>

@@ -1,7 +1,6 @@
 <template>
   <div class="sidenav-container">
     <div v-if="show" class="sidenav-backdrop" @click="$emit('close')"></div>
-<!--        <transition name="slide-side">-->
     <div v-if="show" class="dropdown">
       <div class="nav-list" @click="$emit('close')">
         <div class="item"  @click="changeChatMessageType('all')" :class="{'is-active': currentType !== 'user' && currentType !==  'group' }">
@@ -19,7 +18,6 @@
         </div>
       </div>
     </div>
-<!--        </transition>-->
   </div>
 </template>
 
@@ -27,7 +25,7 @@
 export default {
   data() {
     return {
-      currentType: 'user'
+      currentType: 'all'
     }
   }
   ,
@@ -56,7 +54,6 @@ export default {
 .sidenav-backdrop {
   width: 100%;
   height: 100%;
-  /*background-color: rgba(0, 0, 0, 0.7);*/
   background-color: transparent;
   z-index: 1000;
   position: fixed;
@@ -117,17 +114,6 @@ export default {
 
 .dropdown_item {
   font-size: 15px;
-}
-
-
-.slide-side-enter-active,
-.slide-side-leave-active {
-  transition: all 0.3s ease-out;
-}
-
-.slide-side-enter,
-.slide-side-leave-to {
-  transform: translateX(-100%);
 }
 
 .nav-list {

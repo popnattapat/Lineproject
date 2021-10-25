@@ -1,22 +1,23 @@
 export const state = () => ({
   active_room: {},
-  call_data: [],
+  // read_three_bar: [],
   chat_contact: [],
   chat_data: [],
   chat_lists: [],
   current_chat_lists: [],
+  list_filtered: [],
   chat_loading: false,
   chat_messages: null,
   is_pending: false,
   pending: {},
   search_list: [],
-  list_filtered: [],
   search: '',
 
 })
 
 export const actions = {
   async fetchChatList({commit}) {
+
     let response = await this.$axios.$get('/api/line_message/crud/chatList', {
       params: {
         limit: 1000,
@@ -28,18 +29,21 @@ export const actions = {
     commit('setFilteredList', response.data)
   },
   async fetchChatMessage({commit}, payload) {
+
     commit('setActiveRoom', payload)
     commit('setLoading', true)
+
     let response = await this.$axios.$get('/api/line_message/crud/chatMessage', {
       params: {
         lineId: payload.lineId,
         type: payload.type,
       }
     })
+    console.log(payload);
 
     commit('setLoading', false)
     commit('setChatMessage', response.data)
-    commit('setCall', response.data)
+    // commit('setReadThreeBar', response.data)
 
   },
 }
@@ -54,7 +58,7 @@ export const mutations = {
     state.contact_lists[contact.type] = contact.data.data;
   },
   setActiveRoom(state, payload) {
-    state.active_room = {'avatar': payload.avatar, 'displayName': payload.displayName};
+    state.active_room = {'avatar': payload.avatar, 'displayName': payload.displayName, 'type': payload.type};
   },
   setChatList(state, lists) {
     let collection = this.$collect(lists);
@@ -66,9 +70,10 @@ export const mutations = {
   setChatMessage(state, messages) {
     state.chat_messages = messages;
   },
-  setCall(state, call) {
-    state.call_data = call;
-  },
+  // setReadThreeBar(state, type) {
+  //   state.read.three.bar = type;
+  //   this.commit('chats/changeMessageType', type);
+  // },
   sendMessage(state, message_object) {
     state.chat_messages.unshift(message_object);
 
@@ -96,7 +101,6 @@ export const mutations = {
 
   },
   changeMessageType(state, type) {
-    // this.commit('chats/setSearch', '');
     if (type === 'all') {
       this.commit('chats/setCurrentList', state.chat_lists);
     } else {
@@ -107,11 +111,12 @@ export const mutations = {
     this.commit('chats/setFilteredList', state.current_chat_lists.filter(chat => {
       return chat.displayName.toLowerCase().includes(state.search.toLowerCase())
     }));
+    state.change_message = type;
+
   },
   setSearch(state,value){
     state.search = value;
-  }
-
+  },
 }
 //
 // export const active = {searchInput = document.getElementsByName('searchList')

@@ -1,9 +1,7 @@
 <template>
   <div class="mainchat-textarea">
     <div>
-      <!--      <form action="" @submit.prevent="sendMessage()">-->
       <textarea class="text-input" placeholder="Enter your message here" v-model="message"></textarea>
-      <!--      </form>-->
     </div>
   </div>
 </template>
@@ -87,7 +85,7 @@ form {
 
 .text-input {
   width: 100%;
-  height: 100%;
+  height: 80px;
   padding: 10px 10px 0 10px;
   border: none;
   margin: 0;
@@ -109,7 +107,7 @@ form {
   cursor: pointer;
   font-size: 13px;
   border-width: 1px;
-  //visibility: hidden;
+  visibility: hidden;
 }
 
 </style>

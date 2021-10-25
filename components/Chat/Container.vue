@@ -4,7 +4,8 @@
       <ChatHeader/>
       <ChatBody/>
       <div class="mainchat-function"></div>
-      <ChatInput></ChatInput>
+      <ChatInput/>
+<!--      All of the above is used for mock data in order to initiate template background-->
     </div>
     <div v-else style="background-color: #fafafa; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
       <p style="color: #ADB5AD">Click a chat to start talking!</p>

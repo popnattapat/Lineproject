@@ -1,19 +1,25 @@
 <template>
-<div style="display: flex">
-  <div style="display:flex; flex-direction: column;border-width: 0 1px 1px 1px ;width: calc(100vw - 360px - 360px - 60px);
+  <div style="display: flex">
+    <div style="display:flex; flex-direction: column;border-width: 0 1px 1px 1px ;width: calc(100vw - 360px - 360px - 60px);
   border-color: rgb(222, 226, 230);
   border-style: solid;">
 
-    <ChatHeader/>
-    <ChatBody/>
-    <div class="mainchat-function"></div>
-    <ChatInput/>
+      <ChatHeader/>
+      <ChatBody/>
+      <div v-if="($store.state.chats.active_room.type === 'group')">
+        <ChatInputBlock />
+        <div class="mainchat-function"></div>
+      </div>
+      <div v-else>
+        <div class="mainchat-function"></div>
+        <ChatInput/>
+      </div>
+    </div>
+    <div>
+      <ChatProfile/>
+      <ChatNote/>
+    </div>
   </div>
-  <div>
-  <ChatProfile/>
-  <ChatNote/>
-  </div>
-</div>
 
 </template>
 

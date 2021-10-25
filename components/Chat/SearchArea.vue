@@ -1,17 +1,19 @@
 <template>
   <div class="searcharea">
     <div style="display:flex">
-      <div>
-        <TypeCallThreeBar @sidenavToggle="displaySidenav = !displaySidenav"/>
-        <TypeDropdown :show="displaySidenav" @close="displaySidenav = false"/>
-      </div>
-      <div style="text-align: left; margin: 10px 0px 10px 0; cursor: pointer; color:#353A40 ">
-        All
+      <div @click="displaySidenav = !displaySidenav" style="display: flex; flex-direction: row; cursor: pointer;">
+        <TypeCallThreeBar/>
+        <TypeDropdown :show="displaySidenav"/>
+        <div class="responsethreebar">
+          <div v-if="($store.state.chats.change_message !== 'user' && $store.state.chats.change_message !== 'group')"> All</div>
+          <div v-else-if="($store.state.chats.change_message === 'user')"> User</div>
+          <div v-else-if="($store.state.chats.change_message === 'group')"> Group</div>
+        </div>
       </div>
       <div class="spacer"></div>
       <div>
         <div>
-          <input id=searchbar type="search" style="width:150px" placeholder="Search ..." v-model="search">
+          <input class=searchbar type="search" style="width:150px" placeholder="Search ..." v-model="search">
         </div>
       </div>
     </div>
@@ -50,9 +52,6 @@ export default {
   },
 }
 </script>
-<!--this.$store.commit('chats/setFilteredList', this.$store.state.chats.chat_lists[this.$store.state.chats.search_list].filter(chat => {-->
-<!--return chat(this.$store.state.chats.search_list).toLowerCase().includes(value.toLowerCase())-->
-<!--}));-->
 
 <style lang="scss" scoped>
 .searcharea {
@@ -68,7 +67,7 @@ export default {
   margin: 0 0 0 0;
 }
 
-#searchbar {
+.searchbar {
   padding: 5px 0 5px 7px;
   border-color: rgb(207, 212, 218);
   border-style: solid;
@@ -83,13 +82,12 @@ export default {
   border-radius: 5px;
   display: flex;
   flex-direction: row-reverse;
-  /*outline: none*/
 }
 
 .search:active {
 }
 
-#searchbar:focus {
+.searchbar:focus {
   outline: none !important;
 }
 
@@ -111,6 +109,16 @@ export default {
 
 .spacer {
   flex: 1;
+}
+
+.responsethreebar {
+  text-align: center;
+  padding: 11px;
+  cursor: pointer;
+  color: #353A40;
+  //position: fixed;
+  z-index: 1;
+
 }
 
 

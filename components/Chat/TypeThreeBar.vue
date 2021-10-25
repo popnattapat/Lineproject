@@ -1,8 +1,10 @@
 <template>
-  <div class="drawer-toggle" role="button" @click="$emit('toggle')">
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
+  <div role="button" style="display: flex">
+    <div class="drawer-toggle">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
   </div>
 </template>
 
@@ -28,4 +30,5 @@
   box-sizing: border-box;
   padding: 10px 10px 10px 5px;
 }
+
 </style>
