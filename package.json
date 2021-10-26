@@ -14,7 +14,10 @@
     "@nuxtjs/proxy": "^2.1.0",
     "collect.js": "^4.29.0",
     "core-js": "^3.15.1",
-    "nuxt": "^2.15.7"
+    "nuxt": "^2.15.7",
+    "v-md-date-range-picker": "^2.6.0",
+    "vue2-datepicker": "^3.10.2",
+    "vue2-daterange-picker": "^0.6.7"
   },
   "devDependencies": {
     "@nuxt/image": "^0.6.0",

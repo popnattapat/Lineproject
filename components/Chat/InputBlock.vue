@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="sidenav-backdrop">
-      You can't send messages to this group chat because you aren't given an authority, please contact admin.
+      You can't send messages to this group chat because you aren't given an authority.
     </div>
   </div>
 </template>

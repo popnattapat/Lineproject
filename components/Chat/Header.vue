@@ -19,21 +19,27 @@
           <NavigationJustIcon icon="icon icon-zoom"></NavigationJustIcon>
         </div>
         <div style="margin-left: 5px"> Search</div>
+      </div>
 
+      <div style="margin-right: 15px">
+        <ChatDatePicker/>
       </div>
-      <div class="button">
-        <div style="padding-top:1px">
-          <NavigationJustIcon icon="icon icon-s-check"></NavigationJustIcon>
-        </div>
-        <div style="margin-left: 5px">Resolve</div>
 
-      </div>
-      <div class="button">
-        <div>
-          <NavigationJustIcon icon="icon icon-b-comment"></NavigationJustIcon>
-        </div>
-        <div style="margin-left: 7px"> Follow up</div>
-      </div>
+<!--      <ChatDatePicker/>-->
+
+<!--      <div class="button">-->
+<!--        <div style="padding-top:1px">-->
+<!--          <NavigationJustIcon icon="icon icon-s-check"></NavigationJustIcon>-->
+<!--        </div>-->
+<!--        <div style="margin-left: 5px">Resolve</div>-->
+<!--      </div>-->
+
+<!--      <div class="button">-->
+<!--        <div>-->
+<!--          <NavigationJustIcon icon="icon icon-b-comment"></NavigationJustIcon>-->
+<!--        </div>-->
+<!--        <div style="margin-left: 7px"> Follow up</div>-->
+<!--      </div>-->
     </div>
   </div>
 </template>
@@ -86,7 +92,8 @@ export default {
 .button {
   display: flex;
   box-sizing: border-box;
-  border-color: rgb(102, 111, 134);
+  border-color: rgb(204, 204, 204);
+  border-radius: 10%;
   border-width: 1px;
   border-style: solid;
   padding: 4px 8px;
@@ -94,6 +101,8 @@ export default {
   cursor: pointer;
   color: rgb(102, 111, 134);
   font-size: 13px;
+  justify-content: center;
+  align-items: center;
 }
 
 .button:hover {
