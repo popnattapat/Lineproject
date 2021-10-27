@@ -67,7 +67,6 @@ export default {
         },
       ],
       chat_data: [],
-      filteredChat: [],
     }
   },
   mounted() {

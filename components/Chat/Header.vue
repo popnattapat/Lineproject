@@ -9,17 +9,16 @@
         <div class="mch-l-muted">
           <NavigationJustIcon icon="icon icon-volume-off"></NavigationJustIcon>
         </div>
-
       </div>
     </div>
-    <div class="mch-r" style="flex:1;flex-direction: row-reverse;">
-      <div class="button">
-
-        <div>
-          <NavigationJustIcon icon="icon icon-zoom"></NavigationJustIcon>
-        </div>
-        <div style="margin-left: 5px"> Search</div>
-      </div>
+    <div class="mch-r">
+<!--    <div class="mch-r" style="flex:1;flex-direction: row-reverse;">-->
+<!--      <div class="button">-->
+<!--        <div>-->
+<!--          <NavigationJustIcon icon="icon icon-zoom"></NavigationJustIcon>-->
+<!--        </div>-->
+<!--        <div style="margin-left: 5px"> Search</div>-->
+<!--      </div>-->
 
       <div style="margin-right: 15px">
         <ChatDatePicker/>
@@ -116,5 +115,6 @@ export default {
   align-content: center;
   border-radius: 36px;
 }
+
 
 </style>

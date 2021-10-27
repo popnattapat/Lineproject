@@ -1,9 +1,5 @@
 <template>
-  <div>
-    <!--    <date-picker v-model="time1" valueType="format"></date-picker>-->
-    <!--    <date-picker v-model="time2" type="datetime"></date-picker>-->
-    <!--    <date-picker v-model="time3" range></date-picker>-->
-    <!--    <date-picker v-model="value2" type="datetime" range placeholder="Select datetime - Select datetime"></date-picker>-->
+  <div style="display: flex">
     <date-picker
       v-model="value2"
       type="datetime"
@@ -13,6 +9,10 @@
       :minute-step="10"
       format="DD-MM-YYYY HH:mm"
       :disabled-date="notAfterToday"
+      value='timestamp'
+      :shortcuts="shortcuts"
+      :default-value="new Date()"
+      value-type="timestamp"
       @close="handleRangeClose">
       <template v-slot:footer>
         <button class="mx-btn mx-btn-text" @click="toggleTimeRangePanel">
@@ -20,7 +20,17 @@
         </button>
       </template>
     </date-picker>
+    <div class="button" @click="searchSubmit">
+      <div>
+        <NavigationJustIcon icon="icon icon-zoom"></NavigationJustIcon>
+      </div>
+      <div style="margin-left: 5px"> Search</div>
+    </div>
   </div>
+
+
+
+
 </template>
 
 
@@ -35,8 +45,47 @@ export default {
       value2: [],
       showTimePanel: false,
       showTimeRangePanel: false,
+      shortcuts: [
+        { text: '1 day',
+          onClick () {
+            const start = new Date();
+            const end = new Date();
+            end.setTime(end.getTime() - 24 * 3600 * 1000);
+            const date = [end, start];
+            return date;
+          },
+          },
+        { text: '3 days',
+          onClick () {
+            const start = new Date();
+            const end = new Date();
+            end.setTime(end.getTime() - 3 * 24 * 3600 * 1000);
+            const date = [end, start];
+            return date;
+          },
+        },
+        { text: '1 week',
+          onClick () {
+            const start = new Date();
+            const end = new Date();
+            end.setTime(end.getTime() - 7 * 24 * 3600 * 1000);
+            const date = [end, start];
+            return date;
+          },
+        },
+        { text: '1 month',
+          onClick (here) {
+            const start = new Date();
+            const end = new Date();
+            end.setTime(end.getTime() - 31 * 24 * 3600 * 1000);
+            const date = [end, start];
+            return date;
+          },
+        }
+      ],
     };
   },
+
   methods: {
     // toggleTimePanel() {
     //   this.showTimePanel = !this.showTimePanel;
@@ -53,9 +102,33 @@ export default {
     notAfterToday(date) {
       return date > new Date(new Date().setHours(0, 0, 0, 0));
     },
+    searchSubmit() {
+      console.log('value2', this.value2);
+    }
   },
 };
 </script>
 
-<style></style>
+<style>
+.button {
+  display: flex;
+  box-sizing: border-box;
+  border-color: rgb(204, 204, 204);
+  border-radius: 10%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 4px 8px;
+  margin: 0 0 0 20px;
+  cursor: pointer;
+  color: rgb(102, 111, 134);
+  font-size: 13px;
+  justify-content: center;
+  align-items: center;
+}
 
+.button:hover {
+  color: #666f86;
+  background-color: rgba(102, 111, 134, 0.1)
+}
+
+</style>
