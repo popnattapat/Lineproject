@@ -36,7 +36,7 @@ export default {
           'user_avatar': 'https://profile.line-scdn.net/0h4BVOtthya217Nn1uPLkVEgtmaAdYRzJ_UVh0D0wxNV1ABCQ-AgIiDEswYA5CBn4-XlMhChszM1h3JRwLZWCXWXwGNVpGDy49X1ghiA/preview',
           'user_displayName': 'Pop',
           'message_type': 'text',
-          'user': 'Admin Name',
+          'user': 'Pop',
           'text': this.message,
           'time': this.$moment().toISOString(),
         }
@@ -72,6 +72,9 @@ form {
   border-color: rgb(222, 226, 230);
   border-style: solid;
   border-width: 0 0 1px 0;
+  .dark & {
+    border-color: #b3b3b3;
+  }
 }
 
 .mainchat-textarea {
@@ -91,6 +94,11 @@ form {
   margin: 0;
   font-size: 15px;
   font-family: 'Open Sans', sans-serif;
+  .dark & {
+    background-color: #282828;
+    border-color: #b3b3b3;
+    color: white;
+  }
 
 }
 

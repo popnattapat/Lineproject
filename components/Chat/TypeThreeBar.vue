@@ -12,13 +12,16 @@
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .bar {
   width: 15px;
   height: 2px;
   background-color: rgb(121, 117, 117);
   padding: 0;
-  margin-top: 3px
+  margin-top: 3px;
+  .dark & {
+  background-color: white;
+}
 
 }
 

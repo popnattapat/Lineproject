@@ -4,12 +4,12 @@
       <div class="chatbox2-image"><img :src="$store.state.chats.active_room.avatar" alt="" class="avatar"></div>
       <div>
         <div style="display:flex; justify-content: center; margin-top: 30px">
-        <p class="chatprofile-name">{{ $store.state.chats.active_room.displayName }}</p>
-<!--          <div style="display:flex;align-items: center">-->
-<!--            <i class="icon icon-f-comment" style="color: #ADB5BD; font-size: 20px; opacity: 40%"></i>-->
-<!--          </div>-->
+          <p class="chatprofile-name">{{ $store.state.chats.active_room.displayName }}</p>
+          <!--          <div style="display:flex;align-items: center">-->
+          <!--            <i class="icon icon-f-comment" style="color: #ADB5BD; font-size: 20px; opacity: 40%"></i>-->
+          <!--          </div>-->
         </div>
-<!--          <p class="chatprofile-addtags"> + Add tags</p>-->
+        <!--          <p class="chatprofile-addtags"> + Add tags</p>-->
       </div>
     </div>
   </div>
@@ -32,7 +32,7 @@ export default {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 .chatprofile {
   display: block;
@@ -46,6 +46,12 @@ export default {
   align-items: center;
   padding: 48px 16px;
   box-sizing: border-box;
+
+  .dark & {
+    background-color: #282828;
+    border-color: rgba(255, 255, 255, 0.1);
+    border-width: 0 0 1px 0;
+  }
 }
 
 .chatbox2-image {
@@ -54,17 +60,23 @@ export default {
 
 .chatprofile-name {
   font-size: 22.5px;
-  display:flex;
+  display: flex;
   text-align: center;
   justify-content: center;
   align-items: center;
+
+  .dark & {
+    color: #FFFFFF;
+  }
 }
+
 .chatprofile-addtags {
   font-size: 15px;
   color: #00B900;
   line-height: 2;
   margin-top: 3px;
 }
+
 .avatar {
   width: 192px;
   height: 192px;

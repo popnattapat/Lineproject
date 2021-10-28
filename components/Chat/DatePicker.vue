@@ -21,6 +21,7 @@
       </template>
     </date-picker>
     <div class="button" @click="searchSubmit">
+<!--    <div class="button" @click="setAdvanceSearch()">-->
       <div>
         <NavigationJustIcon icon="icon icon-zoom"></NavigationJustIcon>
       </div>
@@ -46,7 +47,7 @@ export default {
       showTimePanel: false,
       showTimeRangePanel: false,
       shortcuts: [
-        { text: '1 day',
+        { text: '1 day ago',
           onClick () {
             const start = new Date();
             const end = new Date();
@@ -55,7 +56,7 @@ export default {
             return date;
           },
           },
-        { text: '3 days',
+        { text: '3 days ago',
           onClick () {
             const start = new Date();
             const end = new Date();
@@ -64,7 +65,7 @@ export default {
             return date;
           },
         },
-        { text: '1 week',
+        { text: '1 week ago',
           onClick () {
             const start = new Date();
             const end = new Date();
@@ -73,7 +74,7 @@ export default {
             return date;
           },
         },
-        { text: '1 month',
+        { text: '1 month ago',
           onClick (here) {
             const start = new Date();
             const end = new Date();
@@ -105,11 +106,15 @@ export default {
     searchSubmit() {
       console.log('value2', this.value2);
     }
-  },
-};
+    // setAdvanceSearch() {
+      // this.$store.dispatch('chats/setAdvanceSearch',)
+      // console.log('value2', this.value2);
+    // }
+    }
+  }
 </script>
 
-<style>
+<style lang="scss">
 .button {
   display: flex;
   box-sizing: border-box;
@@ -124,6 +129,9 @@ export default {
   font-size: 13px;
   justify-content: center;
   align-items: center;
+.dark & {
+  background-color: #FFFFFF;
+}
 }
 
 .button:hover {

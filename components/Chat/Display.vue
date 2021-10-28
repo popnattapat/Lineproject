@@ -1,8 +1,6 @@
 <template>
   <div style="display: flex">
-    <div style="display:flex; flex-direction: column;border-width: 0 1px 1px 1px ;width: calc(100vw - 360px - 360px - 60px);
-  border-color: rgb(222, 226, 230);
-  border-style: solid;">
+    <div class="all">
 
       <ChatHeader/>
       <ChatBody/>
@@ -40,7 +38,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 .mainchat-function {
   display: block;
@@ -51,9 +49,24 @@ export default {
   border-color: rgb(222, 226, 230);
   border-style: solid;
   background-color: rgb(248, 249, 250);
+  .dark & {
+    background-color: #282828;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
 }
-
-
+.all {
+  display:flex;
+  flex-direction: column;
+  border-width: 0 1px 1px 1px ;
+  width: calc(100vw - 360px - 360px - 60px);
+  border-color: rgb(222, 226, 230);
+  border-style: solid;
+  .dark & {
+    border-width: 0px 1px 0 1px;
+    border-color: rgba(255, 255, 255, 0.1);
+    background-color: #282828;
+  }
+}
 .chatprofile {
   display: block;
   width: 360px;

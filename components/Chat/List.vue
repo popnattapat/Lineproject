@@ -55,15 +55,24 @@ export default {
   display: flex;
   box-sizing: border-box;
   cursor: pointer;
+  .dark & {
+    background-color: #181818;
+  }
 
   &.is-active {
     background-color: #edeff0;
+    .dark & {
+      background-color: #404040;
+    }
   }
 }
 
 
 .chatbox:hover {
   background-color: rgb(248, 249, 250);
+  .dark & {
+    background-color: #282828;
+  }
 }
 
 .chatbox2-image {
@@ -109,6 +118,9 @@ export default {
   margin: 0 0 0 3px;
   padding: 0 0 0 6px;
   font-size: 14px;
+  .dark & {
+    color: white;
+  }
 }
 
 .chatbox2-texts_m {

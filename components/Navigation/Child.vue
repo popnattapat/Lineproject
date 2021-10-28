@@ -28,18 +28,30 @@ export default {
     color: #666f8640;
     font-size: 28px;
     text-align: center;
+    .dark & {
+      color: #888888;
+    }
   }
 
   .icon:hover{
     color: #aaaaaa;
+    .dark & {
+      color: #d5d5d5;
+    }
   }
 
  .nuxt-link-active{
    .icon {
      color: #888888;
+     .dark & {
+       color: white;
+     }
    }
    .icon:hover{
      color: #aaaaaa;
+     .dark & {
+       color: white;
+     }
    }
  }
 }

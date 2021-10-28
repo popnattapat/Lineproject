@@ -27,6 +27,10 @@
   padding: 16px 0 0 16px;
   justify-content: space-between;
   overflow-y: scroll;
+  .dark & {
+    background-color: #282828;
+    border-color: #282828;
+  }
 }
 
 .note {
@@ -35,6 +39,9 @@
   margin: 0;
   color: #353A40;
   font-size: 17px;
+  .dark & {
+    color: #FFFFFF;
+  }
 }
 
 .chatnote-1 {

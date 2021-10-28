@@ -12,41 +12,40 @@
       </div>
     </div>
     <div class="mch-r">
-<!--    <div class="mch-r" style="flex:1;flex-direction: row-reverse;">-->
-<!--      <div class="button">-->
-<!--        <div>-->
-<!--          <NavigationJustIcon icon="icon icon-zoom"></NavigationJustIcon>-->
-<!--        </div>-->
-<!--        <div style="margin-left: 5px"> Search</div>-->
-<!--      </div>-->
+      <!--    <div class="mch-r" style="flex:1;flex-direction: row-reverse;">-->
+      <!--      <div class="button">-->
+      <!--        <div>-->
+      <!--          <NavigationJustIcon icon="icon icon-zoom"></NavigationJustIcon>-->
+      <!--        </div>-->
+      <!--        <div style="margin-left: 5px"> Search</div>-->
+      <!--      </div>-->
 
       <div style="margin-right: 15px">
         <ChatDatePicker/>
       </div>
 
-<!--      <ChatDatePicker/>-->
+      <!--      <ChatDatePicker/>-->
 
-<!--      <div class="button">-->
-<!--        <div style="padding-top:1px">-->
-<!--          <NavigationJustIcon icon="icon icon-s-check"></NavigationJustIcon>-->
-<!--        </div>-->
-<!--        <div style="margin-left: 5px">Resolve</div>-->
-<!--      </div>-->
+      <!--      <div class="button">-->
+      <!--        <div style="padding-top:1px">-->
+      <!--          <NavigationJustIcon icon="icon icon-s-check"></NavigationJustIcon>-->
+      <!--        </div>-->
+      <!--        <div style="margin-left: 5px">Resolve</div>-->
+      <!--      </div>-->
 
-<!--      <div class="button">-->
-<!--        <div>-->
-<!--          <NavigationJustIcon icon="icon icon-b-comment"></NavigationJustIcon>-->
-<!--        </div>-->
-<!--        <div style="margin-left: 7px"> Follow up</div>-->
-<!--      </div>-->
+      <!--      <div class="button">-->
+      <!--        <div>-->
+      <!--          <NavigationJustIcon icon="icon icon-b-comment"></NavigationJustIcon>-->
+      <!--        </div>-->
+      <!--        <div style="margin-left: 7px"> Follow up</div>-->
+      <!--      </div>-->
     </div>
   </div>
 </template>
 <script>
-export default {
-}
+export default {}
 </script>
-<style scoped>
+<style lang="scss" scoped>
 
 .mainchat-header {
   display: flex;
@@ -58,6 +57,11 @@ export default {
   border-style: solid;
   align-content: center;
   align-items: center;
+
+  .dark & {
+    background-color: #282828;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
 }
 
 .mch-l {
@@ -72,15 +76,21 @@ export default {
 
 .mch-l-name {
   padding: 0 0 0 10px;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  .dark & {
+    color: #FFFFFF;
+  }
 }
 
 .mch-l-muted {
   color: rgb(102, 111, 134);
   padding: 10px 0 0 14px;
+  .dark & {
+    color: white;
+  }
 
 }
 
@@ -102,6 +112,7 @@ export default {
   font-size: 13px;
   justify-content: center;
   align-items: center;
+
 }
 
 .button:hover {

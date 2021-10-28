@@ -1,6 +1,5 @@
 export const state = () => ({
   active_room: {},
-  // read_three_bar: [],
   chat_contact: [],
   chat_data: [],
   chat_lists: [],
@@ -12,6 +11,7 @@ export const state = () => ({
   pending: {},
   search_list: [],
   search: '',
+  // advance_search: []
 
 })
 
@@ -70,10 +70,6 @@ export const mutations = {
   setChatMessage(state, messages) {
     state.chat_messages = messages;
   },
-  // setReadThreeBar(state, type) {
-  //   state.read.three.bar = type;
-  //   this.commit('chats/changeMessageType', type);
-  // },
   sendMessage(state, message_object) {
     state.chat_messages.unshift(message_object);
 
@@ -117,6 +113,10 @@ export const mutations = {
   setSearch(state,value){
     state.search = value;
   },
+  // setAdvanceSearch(state, payload){
+  //   this.commit('chats/setActiveRoom', state.payload);
+  //   state.advance_search = {'1':payload.searchone, '2':payload.searchtwo}
+  // }
 }
 //
 // export const active = {searchInput = document.getElementsByName('searchList')

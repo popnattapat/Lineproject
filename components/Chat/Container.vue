@@ -27,7 +27,7 @@ export default {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .mainchat {
   display: block;
   box-sizing: border-box;
@@ -40,6 +40,9 @@ export default {
   border-width: 0 0 0 1px;
   border-color: rgb(222, 226, 230);
   border-style: solid;
+  //.dark & {
+  //  border-color: rgba(255, 255, 255, 0.1);
+  //}
 }
 
 .mainchat-function {
@@ -51,6 +54,9 @@ export default {
   border-color: rgb(222, 226, 230);
   border-style: solid;
   background-color: rgb(248, 249, 250);
+  //.dark & {
+  //  border-color: rgba(255, 255, 255, 0.1);
+  //}
 }
 
 </style>

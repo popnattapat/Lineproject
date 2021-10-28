@@ -65,6 +65,10 @@ export default {
   border-style: solid;
   padding: 8px;
   margin: 0 0 0 0;
+  .dark & {
+    background-color: #282828;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
 }
 
 .searchbar {
@@ -96,6 +100,9 @@ export default {
   height: 2px;
   background-color: rgb(121, 117, 117);
   padding: 0;
+  .dark & {
+    background-color: white;
+  }
 }
 
 .drawer-toggle {
@@ -105,6 +112,7 @@ export default {
   cursor: pointer;
   box-sizing: border-box;
   padding: 10px 10px 10px 5px;
+
 }
 
 .spacer {
@@ -118,6 +126,9 @@ export default {
   color: #353A40;
   //position: fixed;
   z-index: 1;
+  .dark & {
+    color: white;
+  }
 
 }
 

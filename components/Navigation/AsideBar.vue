@@ -32,7 +32,10 @@ li{
   height: calc(100vh - 60px);
   text-align: center;
   box-sizing: border-box;
-
+  .dark & {
+    background-color: #444444;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
 }
 
 .nav.menu-button-opacity {
