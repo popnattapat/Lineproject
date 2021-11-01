@@ -28,6 +28,9 @@ export default {
   width: 100%;
   height: calc(100vh - 60px);
   box-sizing: border-box;
+  .dark & {
+    background-color: #181818;
+  }
 }
 
 

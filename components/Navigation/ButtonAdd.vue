@@ -27,6 +27,9 @@ export default {
     color: #00B900;
     font-size: 23px;
     margin-right: 25px;
+      .dark & {
+        color: #FFFFFF;
+      }
   }
 
   .icon:hover{

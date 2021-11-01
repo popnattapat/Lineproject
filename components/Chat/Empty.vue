@@ -28,7 +28,8 @@ export default {
   border-color: rgb(222, 226, 230);
   .dark & {
     background-color: #282828;
-    border-width: 0
+    border-width: 0 0 0 1px;
+    border-color: rgba(255, 255, 255, 0.1);
   }
 }
 

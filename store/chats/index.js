@@ -37,6 +37,7 @@ export const actions = {
       params: {
         lineId: payload.lineId,
         type: payload.type,
+        limit: 25,
       }
     })
     console.log(payload);

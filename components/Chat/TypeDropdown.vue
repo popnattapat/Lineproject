@@ -3,12 +3,12 @@
     <div v-if="show" class="sidenav-backdrop" @click="$emit('close')"></div>
     <div v-if="show" class="dropdown">
       <div class="nav-list" @click="$emit('close')">
-        <div class="item"  @click="changeChatMessageType('all')" :class="{'is-active': currentType !== 'user' && currentType !==  'group' }">
+        <div class="item" @click="changeChatMessageType('all')" :class="{'is-active': currentType !== 'user' && currentType !==  'group' }">
           <i class=" icon icon-f-comment"></i>
           <div class="dropdown_item">All</div>
         </div>
         <div class="seperator"></div>
-        <div class="item"  @click="changeChatMessageType('user')" :class="{'is-active': currentType === 'user' }">
+        <div class="item" @click="changeChatMessageType('user')" :class="{'is-active': currentType === 'user' }">
           <i class=" icon icon-user"></i>
           <div class="dropdown_item">Users</div>
         </div>
@@ -74,7 +74,12 @@ export default {
   border-width: 1px;
   border-color: rgb(222, 226, 230);
   border-style: solid;
-  padding-top: 10px
+  padding-top: 10px;
+
+  .dark & {
+    background-color: #282828;
+    border-color: #606060;
+  }
 }
 
 
@@ -89,11 +94,18 @@ export default {
 
   &.is-active {
     background-color: #edeff0;
+
+    .dark & {
+      background-color: #454545;
+    }
   }
 }
 
 .item:hover {
   background-color: #edeff0;
+  .dark & {
+    background-color: #353535;
+  }
 }
 
 
@@ -102,6 +114,9 @@ export default {
   opacity: 50%;
   font-size: 18px;
   margin-right: 10px;
+  .dark & {
+    color: white
+  }
 }
 
 .seperator {
@@ -110,32 +125,22 @@ export default {
   border-color: rgb(222, 226, 230);
   border-style: solid;
   margin: 8px 0;
+  .dark & {
+    border-color: #606060;
+  }
 }
 
 .dropdown_item {
   font-size: 15px;
+  .dark & {
+    color: white
+  }
 }
 
 .nav-list {
   list-style: none;
   padding: 0;
   margin: 0;
-
-}
-
-.nav-item {
-  margin: 20px 0;
-}
-
-.nav-item a {
-  text-decoration: none;
-  color: black;
-  font-size: 1.5rem;
-}
-
-.nav-item a:hover,
-.nav-item a:active {
-  color: red;
 }
 
 </style>

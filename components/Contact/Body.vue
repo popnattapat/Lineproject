@@ -29,7 +29,7 @@
 
       <div style="display: flex; flex-direction: row-reverse">
         <div class="clear" @click="search = ''"> Clear</div>
-        <input id=searchbar type="search" placeholder="Search ..." v-model="search">
+        <input class=searchbar type="search" placeholder="Search ..." v-model="search">
       </div>
     </div>
   </div>
@@ -66,6 +66,10 @@ export default {
   font-size: 30px;
   margin-bottom: 10px;
   color: #353A40;
+
+  .dark & {
+    color: #E4E6Eb;
+  }
 }
 
 .p {
@@ -75,6 +79,11 @@ export default {
   border-style: solid;
   border-width: 0 0 1px 0;
   border-color: rgb(222, 226, 230);
+
+  .dark & {
+    color: #b3b3b3;
+
+  }
 }
 
 .alert {
@@ -85,6 +94,10 @@ export default {
   border-style: solid;
   border-width: 0 0 1px 0;
   border-color: rgb(222, 226, 230);
+
+  .dark & {
+    background-color: transparent;
+  }
 }
 
 .alertbox {
@@ -96,19 +109,31 @@ export default {
   width: 960px;
   height: 122px;
   padding: 12px 20px;
+
+  .dark & {
+    background-color: #383838;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
 }
 
 .alertbox_t1 {
   font-size: 18.75px;
   color: #666F86;
   margin-bottom: 8px;
-  display: flex
+  display: flex;
+
+  .dark & {
+    color: #b3b3b3
+  }
 }
 
 .alertbox_t2 {
   font-size: 15px;
   color: #666F86;
   line-height: 22px;
+  .dark & {
+    color: #b3b3b3
+  }
 }
 
 .icon {
@@ -116,10 +141,11 @@ export default {
   padding-top: 1px
 }
 
-#searchbar {
+.searchbar {
   width: 150px;
   box-sizing: border-box;
   margin: 15px 0 15px 0;
+  padding: 0 0 0 10px
 }
 
 .clear {
@@ -134,6 +160,13 @@ export default {
   align-items: center;
   justify-content: center;
   margin: 15px 0 15px 10px;
+}
+
+.clear:hover {
+  background: rgba(173, 181, 173, 0.32);
+  .dark & {
+    background-color: #808080;
+  }
 }
 
 
@@ -164,13 +197,25 @@ export default {
   align-items: center;
   font-size: 13px;
   margin: 15px 0 15px 10px;
+  .dark & {
+    background-color: #282828;
+    color: white;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
 
   &.is-active {
     background-color: #EDEEF0;
+    .dark & {
+      background-color: #454545;
+      border-color: rgba(255, 255, 255, 0.1);
+    }
   }
 }
 
 .linkbtn:hover {
   background-color: #EDEEF0;
+  .dark & {
+    background-color: #353535;
+  }
 }
 </style>

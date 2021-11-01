@@ -62,7 +62,7 @@ export default {
   &.is-active {
     background-color: #edeff0;
     .dark & {
-      background-color: #404040;
+      background-color: #353535;
     }
   }
 }

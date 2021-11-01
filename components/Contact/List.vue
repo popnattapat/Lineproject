@@ -36,7 +36,7 @@
         <td class="tablebody">
           <div style="color: #353A40; display: flex">
             <img :src="chat.avatar" alt="" class="avatar">
-            <div style="margin: 10px 0 0 10px">{{ chat.lineName || chat.name }}</div>
+            <div class="chatnamecolor">{{ chat.lineName || chat.name }}</div>
           </div>
         </td>
         <td class="tablebody">{{ chat.is_active }}</td>
@@ -97,12 +97,6 @@ export default {
       }
     }
   },
-  created() {
-    // this.$store.dispatch('chats/fetchChatList');
-    // this.$store.dispatch('chats/searchList')
-  },
-  function: {},
-
 }
 </script>
 <style lang="scss" scoped>
@@ -122,6 +116,19 @@ export default {
   border-style: solid;
   border-color: rgb(222, 226, 230);
   font-size: 16px;
+  .dark & {
+    background-color: #383838;
+    color: antiquewhite;
+    font-weight: 500;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+.chatnamecolor {
+  color: black;
+  margin: 10px 0 0 10px;
+  .dark & {
+    color: #ADB5AD;
+  }
 }
 
 .tablebody {
@@ -131,7 +138,11 @@ export default {
   color: #666F86;
   border-width: 0 0 1px 0;
   border-style: solid;
-  border-color: rgb(222, 226, 230)
+  border-color: rgb(222, 226, 230);
+  .dark & {
+    color: #ADB5AD;
+    border-color: rgba(255, 255, 255, 0.3);
+  }
 }
 
 .avatar {
@@ -154,6 +165,17 @@ export default {
   text-align: center;
   align-items: center;
   font-size: 13px;
+  .dark & {
+    background-color: #3a3b3c;
+    border-color: black;
+    color: white
+  }
+}
+.chatlink:hover {
+  background-color: rgba(188, 231, 188, 0.69);
+  .dark & {
+    background-color: #666666;
+  }
 }
 
 .icon {
