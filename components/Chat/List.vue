@@ -1,6 +1,6 @@
 <template>
   <div class="chatlist" style="overflow-y: scroll;">
-    <div v-for="(chat, index) in $store.state.chats.list_filtered" :key="index"
+    <div id="infinitechat" v-for="(chat, index) in $store.state.chats.list_filtered" :key="index"
          @click="$store.dispatch('chats/fetchChatMessage', {'lineId': chat.lineId, 'type':chat.type, 'avatar': chat.avatar,'displayName': chat.displayName})">
       <div class="chatbox" :class="{'is-active': $store.state.chats.active_room.displayName === chat.displayName}">
         <div class="chatbox2-image"><img :src="chat.avatar" alt="" class="avatar"></div>
@@ -25,8 +25,32 @@ export default {
       console.log(contact);
       this.$store.dispatch('chats/fetchChatMessage', {'lineId': contact.contact.lineId, 'type':contact.type, 'avatar': contact.contact.avatar,'displayName': contact.contact.lineName || contact.contact.name})
     }
+
+    // const callData = document.querySelector('#infinitechat');
+    // callData.addEventListener('scroll', function(){
+    //   if(callData.scrollTop + callData.clientHeight >= callData.scrollHeight){
+    //     this.loadMoreChat();
+    //   }
+    // });
+    // this.loadMoreChat();
+    },
+  // mounted() {},
+
+  methods: {
+    // getMoreChat() {
+    //   window.onscroll = (){
+    //     let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+    //     if (bottomOfWindow) {);
+    //     });
+    //   }
+    // }
+    // loadMoreChat(){
+    //   for(let i = 0; i<10; i ++){
+    //     this.increment++;
+    //     this.lineId.push(this.increment);
+    //   }
+    // }
   },
-  methods: {},
   created() {
     this.$store.dispatch('chats/fetchChatList');
   },

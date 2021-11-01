@@ -11,6 +11,7 @@ export const state = () => ({
   pending: {},
   search_list: [],
   search: '',
+  skip: 0,
   // advance_search: []
 
 })
@@ -44,14 +45,38 @@ export const actions = {
 
     commit('setLoading', false)
     commit('setChatMessage', response.data)
-    // commit('setReadThreeBar', response.data)
-
   },
+  async fetchNewChatMessage ({commit, state}, payload) {
+
+
+    if (state.skip === 0){
+      commit('setSkip', 25)
+    }else{
+      commit('setSkip', payload.skip + state.skip)
+    }
+
+
+    let response = await this.$axios.$get('/api/line_message/crud/chatMessage', {
+      params: {
+        lineId: state.active_room.lineId,
+        type: state.active_room.type,
+        limit: payload.limit,
+        skip: state.skip,
+      }
+    })
+    console.log(response);
+
+
+    commit('addMessage', response.data)
+  }
 }
 
 
 export const mutations = {
 
+  setSkip(state, skip){
+    state.skip = skip;
+  },
   setLoading(state, boolean) {
     state.chat_loading = boolean;
   },
@@ -59,7 +84,8 @@ export const mutations = {
     state.contact_lists[contact.type] = contact.data.data;
   },
   setActiveRoom(state, payload) {
-    state.active_room = {'avatar': payload.avatar, 'displayName': payload.displayName, 'type': payload.type};
+    state.skip = 0;
+    state.active_room = {'avatar': payload.avatar, 'displayName': payload.displayName, 'type': payload.type, 'lineId': payload.lineId};
   },
   setChatList(state, lists) {
     let collection = this.$collect(lists);
@@ -71,9 +97,17 @@ export const mutations = {
   setChatMessage(state, messages) {
     state.chat_messages = messages;
   },
-  sendMessage(state, message_object) {
+  addMessage(state, messages) {
+    state.chat_messages.push( ...messages);
+  },
+  async sendMessage(state, message_object) {
     state.chat_messages.unshift(message_object);
 
+    let response = await this.$axios.$post('/api/line_message/crud/sendText', {
+      lineId: state.active_room.lineId,
+      type: state.active_room.type,
+      message: message_object.text,
+    });
     // axios.post('/line_message/' + payload.id,)
     //   .then(response => {
     //     let data = response.data;

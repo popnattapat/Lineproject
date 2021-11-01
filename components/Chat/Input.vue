@@ -32,6 +32,7 @@ export default {
     sendMessage() {
       if (this.message) {
         let message_obj = {
+          'is_admin': true,
           'lineId': 'aa',
           'user_avatar': 'https://profile.line-scdn.net/0h4BVOtthya217Nn1uPLkVEgtmaAdYRzJ_UVh0D0wxNV1ABCQ-AgIiDEswYA5CBn4-XlMhChszM1h3JRwLZWCXWXwGNVpGDy49X1ghiA/preview',
           'user_displayName': 'Pop',
