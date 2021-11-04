@@ -12,7 +12,10 @@ export const state = () => ({
   search_list: [],
   search: '',
   skip: 0,
-  // advance_search: []
+  chat_msg_loading: false,
+  timestart: null,
+  timeend: null,
+  time: [],
 
 })
 
@@ -29,10 +32,12 @@ export const actions = {
     commit('setCurrentList', response.data)
     commit('setFilteredList', response.data)
   },
-  async fetchChatMessage({commit}, payload) {
+  async fetchChatMessage({commit, state}, payload) {
 
     commit('setActiveRoom', payload)
     commit('setLoading', true)
+    // commit('setSearchSubmit', payload)
+
 
     let response = await this.$axios.$get('/api/line_message/crud/chatMessage', {
       params: {
@@ -46,44 +51,71 @@ export const actions = {
     commit('setLoading', false)
     commit('setChatMessage', response.data)
   },
-  async fetchNewChatMessage ({commit, state}, payload) {
+  async fetchNewChatMessage({commit, state}, payload) {
 
+    commit('setChatMsgLoading', true)
 
-    if (state.skip === 0){
+    if (state.skip === 0) {
       commit('setSkip', 25)
-    }else{
+    } else {
       commit('setSkip', payload.skip + state.skip)
     }
-
-
     let response = await this.$axios.$get('/api/line_message/crud/chatMessage', {
       params: {
         lineId: state.active_room.lineId,
         type: state.active_room.type,
         limit: payload.limit,
         skip: state.skip,
+        timeend: state.timeend,
+        timestart: state.timestart,
       }
     })
     console.log(response);
 
-
+    commit('setChatMsgLoading', false)
     commit('addMessage', response.data)
+  },
+  async fetchChatMessageSearch({commit, state}) {
+    commit('setSkip', 0);
+    commit('setLoading', true)
+    // commit('setSearchSubmit', payload)
+
+    let response = await this.$axios.$get('/api/line_message/crud/chatMessage', {
+      params: {
+        lineId: state.active_room.lineId,
+        type: state.active_room.type,
+        limit: 25,
+        timeend: state.timeend,
+        timestart: state.timestart,
+      }
+    })
+
+    commit('setLoading', false)
+    commit('setChatMessage', response.data)
   }
+
+
 }
 
 
 export const mutations = {
 
-  setSkip(state, skip){
+  setSkip(state, skip) {
     state.skip = skip;
   },
   setLoading(state, boolean) {
     state.chat_loading = boolean;
   },
+  setChatMsgLoading(state, boolean) {
+    state.chat_msg_loading = boolean;
+  },
   setContact(state, contact) {
     state.contact_lists[contact.type] = contact.data.data;
   },
   setActiveRoom(state, payload) {
+    state.timestart = null;
+    state.timeend = null;
+    state.time = [];
     state.skip = 0;
     state.active_room = {'avatar': payload.avatar, 'displayName': payload.displayName, 'type': payload.type, 'lineId': payload.lineId};
   },
@@ -98,7 +130,7 @@ export const mutations = {
     state.chat_messages = messages;
   },
   addMessage(state, messages) {
-    state.chat_messages.push( ...messages);
+    state.chat_messages.push(...messages);
   },
   async sendMessage(state, message_object) {
     state.chat_messages.unshift(message_object);
@@ -145,9 +177,18 @@ export const mutations = {
     state.change_message = type;
 
   },
-  setSearch(state,value){
+  setSearch(state, value) {
     state.search = value;
   },
+  setSearchTime(state, time) {
+    state.time = time;
+    state.timestart = this.$moment(state.time[0]).startOf('day').toISOString();
+    state.timeend = this.$moment(state.time[1]).endOf('day').toISOString();
+  },
+
+  // console.log(state.time_start);
+  // console.log(state.time_end);
+
   // setAdvanceSearch(state, payload){
   //   this.commit('chats/setActiveRoom', state.payload);
   //   state.advance_search = {'1':payload.searchone, '2':payload.searchtwo}

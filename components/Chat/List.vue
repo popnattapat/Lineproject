@@ -1,5 +1,5 @@
 <template>
-  <div class="chatlist" style="overflow-y: scroll;">
+  <div class="chatlist">
     <div id="infinitechat" v-for="(chat, index) in $store.state.chats.list_filtered" :key="index"
          @click="$store.dispatch('chats/fetchChatMessage', {'lineId': chat.lineId, 'type':chat.type, 'avatar': chat.avatar,'displayName': chat.displayName})">
       <div class="chatbox" :class="{'is-active': $store.state.chats.active_room.displayName === chat.displayName}">
@@ -8,7 +8,14 @@
           <div class="chatbox2-texts_n">{{ chat.displayName }}</div>
           <div class="chatbox2-texts_m" style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">{{ chat.message.text }}</div>
         </div>
-        <div class="chatbox2-time">{{ $moment(chat.message.time).format('H:mm') }}</div>
+<!--        <div class="chatbox2-time">{{ $moment(chat.message.time).format('H:mm') }}</div>-->
+        <div class="chatbox2-time">{{$moment(chat.message.time).calendar(null,{
+          lastDay : '[Yesterday]',
+          sameDay : "HH:mm",
+          nextDay : '[Tomorrow]',
+          lastWeek : 'dddd',
+          sameElse : 'L'
+        })}}</div>
       </div>
     </div>
   </div>
@@ -67,6 +74,12 @@ export default {
   border-radius: 50px;
 
 }
+.chatlist {
+  overflow-y: scroll;
+  .dark & {
+    background-color: #252525;
+  }
+}
 
 .chatbox {
   width: 360px;
@@ -95,7 +108,7 @@ export default {
 .chatbox:hover {
   background-color: rgb(248, 249, 250);
   .dark & {
-    background-color: #282828;
+    background-color: #272727;
   }
 }
 
@@ -121,12 +134,12 @@ export default {
 }
 
 .chatbox2-time {
-  width: 30px;
+  width: 55px;
   height: 60px;
   font-size: 12px;
   color: #ADB5AD;
-  text-align: left;
-  margin: 0 0 0 2px;
+  text-align: right;
+  margin: 0 0 0 0;
   line-height: 20px;
 }
 

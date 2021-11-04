@@ -58,7 +58,7 @@ export default {
     '/api/': {target: 'https://eecl.co.th/', changeOrigin: true}
   },
   moment: {
-    defaultLocale: 'th',
-    locales: ['th'],
+    defaultLocale: 'en-nz',
+    locales: ['en-nz'],
   }
 }

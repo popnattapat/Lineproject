@@ -22,7 +22,12 @@
           <div class="ctc-time">{{ chat.time }}</div>
         </div>
       </div>
-
+      <div class="chatdatebox">
+        <div class="chatdate">
+          Wednesday, September 29
+<!--          pppbbb-->
+        </div>
+      </div>
 
     </div>
   </div>
@@ -98,7 +103,7 @@ export default {
     ]
   },
   computed: {
-    filteredChat () {
+    filteredChat() {
       return this.chat_titles.filter((chat, index) => chat.data.includes(this.search))
     }
   }
@@ -106,6 +111,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.chatdate {
+  display: inline-block;
+  height: 25px;
+  width: 180px;
+  background-color: #00000033;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 80%;
+  box-sizing: border-box;
+  padding-top: 4px;
+  border-radius: 12px;
+  color: black;
+}
+.chatdatebox {
+  text-align: center;
+}
 
 .mainchat-body {
   box-sizing: border-box;

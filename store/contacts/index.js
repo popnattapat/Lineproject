@@ -8,44 +8,36 @@ export const state = () => ({
 export const actions = {
   async fetchContact({commit}, param) {
     commit('setLoading', true)
-
     let user = {
       'type': 'user',
       'data': await this.$axios.$get('/api/line/user', {params: {'orderBy': 'created_at', 'order': 'desc'}})
     }
     commit('setContact', user);
-
     let group = {
       'type': 'group',
       'data': await this.$axios.$get('/api/line/group', {params: {'orderBy': 'created_at', 'order': 'desc'}})
     }
-
     commit('setContact', group);
-
     commit('setFilteredContact', user.data.data);
   },
 
   async fetchUser({commit}, param) {
     commit('setLoading', true)
-
     let user = {
       'type': 'user',
       'data': await this.$axios.$get('/api/line/user', {params: {'orderBy': param.orderBy, 'order': param.order}})
     }
     commit('setContact', user);
-
     commit('setFilteredContact', user.data.data);
   },
 
   async fetchGroup({commit}, param) {
     commit('setLoading', true)
-
     let group = {
       'type': 'group',
       'data': await this.$axios.$get('/api/line/group', {params: {'orderBy': param.orderBy, 'order': param.order}})
     }
     commit('setContact', group);
-
     commit('setFilteredContact', group.data.data);
   },
 

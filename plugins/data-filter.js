@@ -1,20 +1,20 @@
-// import Vue from 'vue'
-//
-// // const months = [
-// //   "January",
-// //   "February",
-// //   "March",
-// //   "April",
-// //   "May",
-// //   "June",
-// //   "July",
-// //   "August",
-// //   "September",
-// //   "October",
-// //   "November",
-// //   "December"
-// // ];
-//
+import Vue from 'vue'
+
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];
+
 // const months = [
 //   "01",
 //   "02",
@@ -29,18 +29,18 @@
 //   "11",
 //   "12"
 // ];
-//
-// const dateFilter = value => {
-//   return formatDate(value);
-// };
-//
-// function formatDate(inputDate) {
-//   const date = new Date(inputDate);
-//   const year = date.getFullYear();
-//   const month = date.getMonth();
-//   const day = date.getDate();
-//   const formatDate = day + "/" + months[month] + "/" + year;
-//   return formatDate;
-// }
-//
-// Vue.filter('date', dateFilter)
+
+const dateFilter = value => {
+  return formatDate(value);
+};
+
+function formatDate(inputDate) {
+  const date = new Date(inputDate);
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const day = date.getDate();
+  const formatDate = day + "/" + months[month] + "/" + year;
+  return formatDate;
+}
+
+Vue.filter('date', dateFilter)

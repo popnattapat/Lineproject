@@ -1,35 +1,33 @@
 <template>
   <div style="display: flex">
     <date-picker
-      v-model="value2"
-      type="datetime"
+      v-model="time"
+      type="date"
       placeholder="Select datetime range"
       range
       :show-time-panel="showTimeRangePanel"
       :minute-step="10"
-      format="DD-MM-YYYY HH:mm"
+      format="D MMMM YYYY"
       :disabled-date="notAfterToday"
       value='timestamp'
       :shortcuts="shortcuts"
       :default-value="new Date()"
       value-type="timestamp"
       @close="handleRangeClose">
-      <template v-slot:footer>
-        <button class="mx-btn mx-btn-text" @click="toggleTimeRangePanel">
-          {{ showTimeRangePanel ? 'select date' : 'select time' }}
-        </button>
-      </template>
+<!--      <template v-slot:footer>-->
+<!--        <button class="mx-btn mx-btn-text" @click="toggleTimeRangePanel">-->
+<!--          {{ showTimeRangePanel ? 'select date' : 'select time' }}-->
+<!--        </button>-->
+<!--      </template>-->
     </date-picker>
-    <div class="button" @click="searchSubmit">
-<!--    <div class="button" @click="setAdvanceSearch()">-->
+    <div class="button" @click="$store.dispatch('chats/fetchChatMessageSearch')">
+      <!--    <div class="button" @click="setAdvanceSearch()">-->
       <div>
         <NavigationJustIcon icon="icon icon-zoom"></NavigationJustIcon>
       </div>
       <div style="margin-left: 5px"> Search</div>
     </div>
   </div>
-
-
 
 
 </template>
@@ -43,21 +41,27 @@ export default {
   components: {DatePicker},
   data() {
     return {
-      value2: [],
+      // momentFormat: {
+      //   ISO: (value2) => {
+      //     return value2 ? this.$moment(value2).format() : ''
+      //   }
+      // },
       showTimePanel: false,
       showTimeRangePanel: false,
       shortcuts: [
-        { text: '1 day ago',
-          onClick () {
+        {
+          text: '1 day ago',
+          onClick() {
             const start = new Date();
             const end = new Date();
             end.setTime(end.getTime() - 24 * 3600 * 1000);
             const date = [end, start];
             return date;
           },
-          },
-        { text: '3 days ago',
-          onClick () {
+        },
+        {
+          text: '3 days ago',
+          onClick() {
             const start = new Date();
             const end = new Date();
             end.setTime(end.getTime() - 3 * 24 * 3600 * 1000);
@@ -65,8 +69,9 @@ export default {
             return date;
           },
         },
-        { text: '1 week ago',
-          onClick () {
+        {
+          text: '1 week ago',
+          onClick() {
             const start = new Date();
             const end = new Date();
             end.setTime(end.getTime() - 7 * 24 * 3600 * 1000);
@@ -74,8 +79,9 @@ export default {
             return date;
           },
         },
-        { text: '1 month ago',
-          onClick (here) {
+        {
+          text: '1 month ago',
+          onClick(here) {
             const start = new Date();
             const end = new Date();
             end.setTime(end.getTime() - 31 * 24 * 3600 * 1000);
@@ -87,13 +93,24 @@ export default {
     };
   },
 
+  computed: {
+    time: {
+      get: function () {
+        return this.$store.state.chats.time;
+      },
+      set: function (time) {
+        this.$store.commit('chats/setSearchTime', time);
+      },
+    }
+  },
+
   methods: {
     // toggleTimePanel() {
     //   this.showTimePanel = !this.showTimePanel;
     // },
-    toggleTimeRangePanel() {
-      this.showTimeRangePanel = !this.showTimeRangePanel;
-    },
+    // toggleTimeRangePanel() {
+    //   this.showTimeRangePanel = !this.showTimeRangePanel;
+    // },
     handleOpenChange() {
       this.showTimePanel = false;
     },
@@ -103,15 +120,20 @@ export default {
     notAfterToday(date) {
       return date > new Date(new Date().setHours(0, 0, 0, 0));
     },
-    searchSubmit() {
-      console.log('value2', this.value2);
-    }
     // setAdvanceSearch() {
-      // this.$store.dispatch('chats/setAdvanceSearch',)
-      // console.log('value2', this.value2);
+    // this.$store.dispatch('chats/setAdvanceSearch',)
+    // console.log('value2', this.value2);
     // }
-    }
-  }
+  },
+  watch: {}
+  // watch: {
+  //   message(newValue, oldValue) {
+  //     if (this.message.length === (this.message.replace(/[^\n]/g, '').length)) {
+  //       this.message = '';
+  //     }
+  //   }
+  // },
+}
 </script>
 
 <style lang="scss">
@@ -129,14 +151,16 @@ export default {
   font-size: 13px;
   justify-content: center;
   align-items: center;
-.dark & {
-  background-color: #FFFFFF;
-}
+
+  .dark & {
+    background-color: #FFFFFF;
+  }
 }
 
 .button:hover {
   color: #666f86;
   background-color: rgba(102, 111, 134, 0.1);
+
   .dark & {
     background-color: #CFD4DA;
   }
