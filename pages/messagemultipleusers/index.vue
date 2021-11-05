@@ -1,36 +1,36 @@
 <template>
   <div>
-    <table style="width:100%" cellspacing="0">
-      <thead>
-      <tr style="text-align: left">
-        <th class="tableheader" style="width: 10%">Name</th>
-        <th class="tableheader" style="width: 15%">Active status</th>
-        <th class="tableheader" style="width: 30%">LineID</th>
-        <th class="tableheader" style="width: 25%">Last messaged</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="(chat, index) in $store.state.chats.chat_rooms" :key="index" @click="$store.commit('chats/fetchUser', {'id': chat.lineId})">
-        <td class="tablebody">
-          <div style="color: #353A40; display: flex">
-            <img :src="chat.avatar" alt="" class="avatar">
-            <div style="margin: 10px 0 0 10px">{{ chat.lineName }}</div>
-          </div>
-        </td>
-        <td class="tablebody">{{ chat.is_active }}</td>
-        <td class="tablebody">{{ $moment(chat.created_at).format('D/M/Y') }}</td>
-        <td class="tablebody">
-          <div style="display: flex; justify-content: space-between">
-            <div style="display: flex;justify-content: center; align-items: center">{{ $moment(chat.updated_at).format('D/M/Y') }}</div>
-            <div class="chatlink">
-              <nuxt-link to="/"><i class="icon icon-comment"></i>Chat</nuxt-link>
+<!--    <table style="width:100%" cellspacing="0">-->
+<!--      <thead>-->
+<!--      <tr style="text-align: left">-->
+<!--        <th class="tableheader" style="width: 10%">Name</th>-->
+<!--        <th class="tableheader" style="width: 15%">Active status</th>-->
+<!--        <th class="tableheader" style="width: 30%">LineID</th>-->
+<!--        <th class="tableheader" style="width: 25%">Last messaged</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr v-for="(chat, index) in $store.state.chats.chat_rooms" :key="index" @click="$store.commit('chats/fetchUser', {'id': chat.lineId})">-->
+<!--        <td class="tablebody">-->
+<!--          <div style="color: #353A40; display: flex">-->
+<!--            <img :src="chat.avatar" alt="" class="avatar">-->
+<!--            <div style="margin: 10px 0 0 10px">{{ chat.lineName }}</div>-->
+<!--          </div>-->
+<!--        </td>-->
+<!--        <td class="tablebody">{{ chat.is_active }}</td>-->
+<!--        <td class="tablebody">{{ $moment(chat.created_at).format('D/M/Y') }}</td>-->
+<!--        <td class="tablebody">-->
+<!--          <div style="display: flex; justify-content: space-between">-->
+<!--            <div style="display: flex;justify-content: center; align-items: center">{{ $moment(chat.updated_at).format('D/M/Y') }}</div>-->
+<!--            <div class="chatlink">-->
+<!--              <nuxt-link to="/"><i class="icon icon-comment"></i>Chat</nuxt-link>-->
 
-            </div>
-          </div>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+<!--            </div>-->
+<!--          </div>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
   </div>
 </template>
 <script>

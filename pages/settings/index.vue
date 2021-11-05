@@ -1,36 +1,36 @@
 <template>
 
-  <div class="mainchat-body" style="padding: 16px;">
+<!--  <div class="mainchat-body" style="padding: 16px;">-->
 
 
-    <!--    <div>-->
-    <!--      <input class="searchbar" placeholder="Search" v-model="search"/>-->
-    <!--    </div>-->
+<!--    &lt;!&ndash;    <div>&ndash;&gt;-->
+<!--    &lt;!&ndash;      <input class="searchbar" placeholder="Search" v-model="search"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </div>&ndash;&gt;-->
 
 
-    <div class="chat-text-customer">
-      <div v-for="(chat, index) in chat_titles" :key="index" :class="{'is_admin': chat.lineId == admin_lineId}" class="chat-container">
-        <div class="avatar-container">
-          <img :src="chat.avatar" alt="" class="avatar">
-        </div>
-        <div class="chat-triangle"></div>
-        <div class="chat-content">
-          <div class="text-container">
-            <div class="admin_name">pop</div>
-            <div class="ctc-text">{{ chat.data }}</div>
-          </div>
-          <div class="ctc-time">{{ chat.time }}</div>
-        </div>
-      </div>
-      <div class="chatdatebox">
-        <div class="chatdate">
-          Wednesday, September 29
-<!--          pppbbb-->
-        </div>
-      </div>
+<!--    <div class="chat-text-customer">-->
+<!--      <div v-for="(chat, index) in chat_titles" :key="index" :class="{'is_admin': chat.lineId == admin_lineId}" class="chat-container">-->
+<!--        <div class="avatar-container">-->
+<!--          <img :src="chat.avatar" alt="" class="avatar">-->
+<!--        </div>-->
+<!--        <div class="chat-triangle"></div>-->
+<!--        <div class="chat-content">-->
+<!--          <div class="text-container">-->
+<!--            <div class="admin_name">pop</div>-->
+<!--            <div class="ctc-text">{{ chat.data }}</div>-->
+<!--          </div>-->
+<!--          <div class="ctc-time">{{ chat.time }}</div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="chatdatebox">-->
+<!--        <div class="chatdate">-->
+<!--          Wednesday, September 29-->
+<!--&lt;!&ndash;          pppbbb&ndash;&gt;-->
+<!--        </div>-->
+<!--      </div>-->
 
-    </div>
-  </div>
+<!--    </div>-->
+<!--  </div>-->
 
 </template>
 

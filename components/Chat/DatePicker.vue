@@ -31,7 +31,7 @@
 
 
 </template>
-
+<!--More detail regarding datepicker detail : https://github.com/mengxiong10/vue2-datepicker#readme-->
 
 <script>
 import DatePicker from 'vue2-datepicker';

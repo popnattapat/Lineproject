@@ -5,9 +5,6 @@
       <div id="box" class="chat-text-customer" style="overflow-y: scroll; padding: 16px 16px 0 16px;">
         <div v-if="!$store.state.chats.chat_loading" v-for="(chat, index) in $store.state.chats.chat_messages" :key="index"
              :class="{'is_admin': chat.is_admin,'no-avatar':chat.user_avatar == ($store.state.chats.chat_messages[index+1]? $store.state.chats.chat_messages[index+1].user_avatar: null) && compareTime(chat.time, $store.state.chats.chat_messages[index+1], 'mm'),
-// 'no-time': $moment(chat.time).calendar() == ($store.state.chats.chat_messages[index+1]? $moment($store.state.chats.chat_messages.chat.time).calendar()[index+1]: null)
-// 'no-time':chat.time == ($store.state.chats.chat_messages[index+1]? $store.state.chats.chat_messages[index+1].time: null)
-// 'no-time':chat.time == ($store.state.chats.chat_messages[index+1]? $store.state.chats.chat_messages[index+1].time: null)
 'no-time': compareTime(chat.time, $store.state.chats.chat_messages[index+1], 'dMy')
 
              }"
@@ -18,7 +15,7 @@
                 $moment(chat.time).calendar(null, {
                   lastDay: '[Yesterday]',
                   sameDay: '[Today]',
-                  lastWeek: 'dddd',
+                  lastWeek: 'dddd, DD/MM',
                   sameElse: 'LL'
                 })
               }}

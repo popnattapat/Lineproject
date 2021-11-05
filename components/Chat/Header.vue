@@ -6,9 +6,9 @@
           <img :src="$store.state.chats.active_room.avatar" alt="" class="avatar">
         </div>
         <div class="mch-l-name">{{ $store.state.chats.active_room.displayName }}</div>
-        <div class="mch-l-muted">
-          <NavigationJustIcon icon="icon icon-volume-off"></NavigationJustIcon>
-        </div>
+<!--        <div class="mch-l-muted">-->
+<!--          <NavigationJustIcon icon="icon icon-volume-off"></NavigationJustIcon>-->
+<!--        </div>-->
       </div>
     </div>
     <div class="mch-r">
